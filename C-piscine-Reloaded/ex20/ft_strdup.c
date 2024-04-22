@@ -33,7 +33,6 @@ char	*ft_strdup(char *src)
 		dest = (char *)malloc(ft_strlen(src) + 1);
 		if (dest == NULL)
 		{
-			free(dest);
 			return (NULL);
 		}
 		i = 0;
