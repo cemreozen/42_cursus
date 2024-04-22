@@ -26,10 +26,10 @@ void	print_params(int argcount, char *string[])
 			j = 0;
 			while (string[i][j] != '\0')
 			{
-				write(1, &string[i][j], 1);
+				ft_putchar(string[i][j]);
 				j++;
 			}
-			write(1, "\n", 1);
+			ft_putchar('\n');
 			i++;
 		}
 	}
