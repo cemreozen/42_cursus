@@ -26,7 +26,7 @@ int	*ft_range(int min, int max)
 	if (array_of_ints == NULL)
 		return (NULL);
 	i = 0;
-	while (max > min)
+	while (min < max)
 	{
 		array_of_ints[i] = min;
 		i++;
