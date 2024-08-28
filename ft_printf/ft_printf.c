@@ -3,46 +3,56 @@
 #include <stdlib.h>
 #include "ft_printf_utils.h"
 
-int ft_printf(const char *format, ...){
+int ft_printf(const char *format, ...) {
 
-    char *to_print;
-    int sum;
-	int	i;
-	to_print = (char *)malloc(100 * sizeof (char));
+	char *to_print;
+	int sum;
+//	to_print = (char *) malloc(100 * sizeof(char));
 
 	va_list arg;
 	va_start(arg, format);
 	sum = 0;
-	i = 0;
-	while (format[i] != '\0') {
-		while (format[i] != '%') {
-			to_print[sum++] = format[i++];
-		}
-		if (format[i] == 'c') {
+	while (*format != '\0') {
+		if (*format == '%')
+			sum += print_format(*(++format), arg);
+		else
+			sum += write(1, format, 1);
+		format++;
+	}
+	va_end(arg);
+	return (sum);
+}
+
+int	print_format(char format_specifier, va_list arg){
+	int counter;
+
+	counter = 0;
+	return counter;
+		if (format_specifier == 'c') {
+			print_char(va_arg(arg, char))
 			//single character
 		}
-		if (format[i] == 's') {
+		if (format_specifier == 's') {
 			ft_putstring();
 			//prints a string
 		}
-		if (format[i] == d) {
+		if (format_specifier == d) {
 			//prints a decimal number
 		}
-		if (format[i] == i) {
+		if (format_specifier == i) {
 			//prints a base 10 integer
 		}
-		if (format[i] == 'u') {
+		if (format_specifier == 'u') {
 			//unsigned base 10 number
 		}
-		if (format[i] == 'x') {
+		if (format_specifier == 'x') {
 			to_print = hexconvert();
 			//hex lowercase
 		}
-		if (format[i] == 'X') {
-			ft_toupper((int) hexconvert());
+		if (format_specifier == 'X') {
 			//hex upper
 		}
-		if (format[i] == %){
+		if (format_specifier == %){
 			ft_putchar('%');
 		}
 	}
